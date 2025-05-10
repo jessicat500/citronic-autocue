@@ -2,6 +2,9 @@
 ; Annotated disassembly by Jessica Rowbottom, May 2025
 ; Ported initially to ca65 by Ray Bellis, April 2025
 ;
+; To be identical to the fitted v2.19AN, the built binary must
+; have an md5sum of e7d3017812a0e49411d76f40937de220
+;
 ; v2.19AN image designed to be burnt to a 2716 EPROM
 ; and fitted in IC3
 
