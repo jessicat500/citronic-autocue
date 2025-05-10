@@ -144,7 +144,7 @@ L597E:
         STA TONEARMSTATE
 L598E:
         LDA TONEARMSTATE
-        BNE L5A04
+        BNE CANCELDECKSTART
         LDA CONST_D1BUTTONS,X
         AND VIAOPB
         BNE L59D9
@@ -189,19 +189,19 @@ L59F6:
         TXA
         BNE L5A01
         STY $5005
-        JMP L5A04
+        JMP CANCELDECKSTART
 L5A01:
         STY $5006
-L5A04:
+CANCELDECKSTART:
         RTS
 L5A05:
         LDY #$00
         TXA                             ; check which deck we're on
         BNE L5A10
-        STY $5005
+        STY $5005                       ; flag semaphore for deck 1 to cancelled?
         JMP ENDDECKSTART
 L5A10:
-        STY $5006
+        STY $5006                       ; flag semaphore for deck 2 to cancelled?
 ENDDECKSTART:
         RTS
 
