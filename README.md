@@ -9,12 +9,14 @@ Disassembly and rewrite of Citronic Autocue as fitted to the 'Micro' range of Ci
 
 3. Compile using `make`
 
-`jess@binky citronic-autocue % make
-ca65 -U -o autocue.o -l autocue.lst autocue.s
-ld65 -o autocue.bin -t none autocue.o
-jess@binky citronic-autocue % md5sum autocue.bin
-e7d3017812a0e49411d76f40937de220  autocue.bin
-jess@binky citronic-autocue % `
+`
+    jess@binky citronic-autocue % make
+    ca65 -U -o autocue.o -l autocue.lst autocue.s
+    ld65 -o autocue.bin -t none autocue.o
+    jess@binky citronic-autocue % md5sum autocue.bin
+    e7d3017812a0e49411d76f40937de220  autocue.bin
+    jess@binky citronic-autocue %
+`
 
 ## Checking Build
 
