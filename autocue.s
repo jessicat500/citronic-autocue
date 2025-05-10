@@ -91,29 +91,30 @@ PAUSE:
         NOP
         LDA #$FF
         STA PAUSECOUNTER
-PAUSELOOP1:
+PAUSELOOP:
         NOP
         LDA DEBUG_ROMSEL
         LDA #$FF
         STA TIMER
         LDA DEBUG_SEMAPHORE             ; blip the debug semaphore
         DEC PAUSECOUNTER
-        BNE PAUSELOOP1
+        BNE PAUSELOOP
         RTS
 
 ; this seems to be a half-time pause routine but it's not used anywhere?
 
+SHORTPAUSE:
         NOP
         LDA #$80
         STA PAUSECOUNTER
-PAUSELOOP2:
+SHORTPAUSELOOP:
         NOP
         LDA DEBUG_ROMSEL
         LDA #$FF
         STA TIMER
         LDA DEBUG_SEMAPHORE             ; blip the debug semaphore
         DEC PAUSECOUNTER
-        BNE PAUSELOOP2
+        BNE SHORTPAUSELOOP
         RTS
 
 ; scan deck start button for changes
