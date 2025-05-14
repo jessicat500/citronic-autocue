@@ -19,8 +19,8 @@
         .res $58a0 - *, $EA
 
 START:
-        CLD
-        SEI
+        CLD                             ; we don't use decimal mode at all
+        SEI                             ; disallow all interrupts
         LDX #$FF
         TXS                             ; clear stack
         LDA #$FC                        ; set up IO for PA (11000000)
@@ -65,7 +65,7 @@ INITVARS:
         LDA #$55
         STA D2MASK
         LDX #$0A                        ; init with deck 2 first
-        CLI
+        CLI                             ; allow interrupts again
 
 SCANLOOP:
         NOP
@@ -731,7 +731,8 @@ CONST_D2TONEARMSTATE:   .byte $02           ; d2 arm rest state
 
 ; vectors (bootstrap pointer for 6502 runs the code, should be after the copyright message)
 ; putting these in this memory location is critical as it's where the 6502 will look for
-; the code execution address
+; the code execution address in case of NMI, RESET or IRQ. In all cases, it just restarts
+; the program.
 
         .res $5ffa - *, $ea
         .word  START
